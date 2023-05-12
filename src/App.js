@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import Banner from './componentes/Banner';
 import Formulario from './componentes/Formulario';
 import Time from './componentes/Time';
 import Footer from './componentes/Footer';
 import Apresentacao from './componentes/Apresentacao';
+import Banner from "./componentes/Banner"
 
 function App() {
   const [times, setTimes ] = useState([
@@ -70,7 +70,7 @@ function App() {
   }
   return (
     <div className="App">
-      <Banner />
+      <Banner enderecoImagem='./imagens/banner.png' />
       <Apresentacao />
       <Formulario  
         cadastrarTime = {cadastrarTime}
