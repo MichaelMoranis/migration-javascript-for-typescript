@@ -1,7 +1,17 @@
 import {AiFillCloseCircle}  from "react-icons/ai"
 import "./Colaborador.css"
 
-const Colaborador = ({nome, sobrenome, cargo, imagem, corDeFundo, aoDeletar}) => {
+interface ColaboradorProps {
+    nome: string
+    sobrenome: string
+    cargo: string
+    imagem: string
+    corDeFundo: string
+    aoDeletar: (nome: string) => void
+
+}
+
+const Colaborador = ({nome, sobrenome, cargo, imagem, corDeFundo, aoDeletar}: ColaboradorProps) => {
     return (
         <div className="colaborador">
             <AiFillCloseCircle 
