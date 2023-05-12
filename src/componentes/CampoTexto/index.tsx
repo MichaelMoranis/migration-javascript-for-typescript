@@ -1,5 +1,4 @@
 import "./CampoTexto.css"
-
 interface CampoTextoProps {
     aoAlterar: (valor: string) => void
     label: string
@@ -9,19 +8,19 @@ interface CampoTextoProps {
     obrigatorio: boolean
 }
 
-const CampoTexto = (props: CampoTextoProps) => {
+const CampoTexto = ({ aoAlterar, label, obrigatorio, placeholder, valor, descricao } : CampoTextoProps) => {
     const aoDigitar = (evento: React.ChangeEvent<HTMLInputElement>) => {
-        props.aoAlterar(evento.target.value);
+        aoAlterar(evento.target.value);
     }
     return (
         <div className="campo-texto">
-            <label>{props.label}</label>
-            <h6>{props.descricao}</h6>
+            <label>{label}</label>
+            <h6>{descricao}</h6>
             <input 
-             value={props.valor} 
-             onChange={ evento => aoDigitar} 
-             required={props.obrigatorio} 
-             placeholder={props.placeholder} />
+             value={valor} 
+             onChange={aoDigitar} 
+             required={obrigatorio} 
+             placeholder={placeholder} />
         </div>
     )
 }
