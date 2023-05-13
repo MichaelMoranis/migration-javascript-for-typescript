@@ -3,8 +3,16 @@ import Botao from "../Botao";
 import CampoTexto from "../CampoTexto";
 import ListaSuspensa from "../ListaSuspensa";
 import "./Formulario.css";
+import { IColaborador } from "../../shared/interfaces/IColaborador";
 
-const Formulario = (props) => {
+interface FormularioProps {
+    aoColaboradorCadastrado: (colaborador: IColaborador) => void
+    cadastrarTime: (dados: {nome: string, cor: string}) => string
+    nomesDosTimes: string[]
+    times: string[]
+}
+
+const Formulario = (props: FormularioProps) => {
 
   const [nome, setNome] = useState("");
   const [sobrenome, setSobreNome] = useState("");
@@ -14,7 +22,8 @@ const Formulario = (props) => {
   const [nomeTime, setNomeTime] = useState("");
   const [CorTime, setCorTime] = useState("");
 
-  const aoSalvar = (evento) => {
+  const aoSalvar = (evento: React.FormEvent<HTMLFormElement>
+    ) => {
     evento.preventDefault();
     props.aoColaboradorCadastrado({
       nome,
@@ -64,6 +73,7 @@ const Formulario = (props) => {
            />
         <ListaSuspensa 
             label="Time" 
+            required={true}
             itens={props.nomesDosTimes}
             valor={time}
             aoAlterar={valor => setTime(valor)}
