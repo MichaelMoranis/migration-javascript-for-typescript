@@ -4,6 +4,7 @@ import Time from './componentes/Time';
 import Footer from './componentes/Footer';
 import Apresentacao from './componentes/Apresentacao';
 import Banner from "./componentes/Banner"
+import { IColaborador } from './shared/interfaces/IColaborador';
 
 function App() {
   const [times, setTimes ] = useState([
@@ -64,9 +65,9 @@ function App() {
     setTimes([...times, {...novoTime}])
   }
 
-  const colaboradorAdicionado = (colaborador) => {
+  const colaboradorAdicionado = (colaborador: IColaborador) => {
 
-    setColaboradores([...colaboradores, colaborador])
+    // setColaboradores([...colaboradores, colaborador])
   }
   return (
     <div className="App">
