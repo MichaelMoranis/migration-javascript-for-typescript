@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import Formulario from './componentes/Formulario';
 import Time from './componentes/Time';
-import Footer from './componentes/Footer';
-import Apresentacao from './componentes/Apresentacao';
 import Banner from "./componentes/Banner"
 import { IColaborador } from './shared/interfaces/IColaborador';
+// import { INovoTime } from './shared/INovoTime';
+
+
 
 function App() {
   const [times, setTimes ] = useState([
@@ -46,13 +47,13 @@ function App() {
   },
 ]);
 
-  const [colaboradores, setColaboradores] = useState([]);
+  const [colaboradores, setColaboradores] = useState<IColaborador[]>([]);
 
-  function deletarColaborador(nome) {
+  function deletarColaborador(nome: string) {
     setColaboradores(colaboradores.filter(colaborador => colaborador.nome !== nome));
   }
 
-  function mudarCorDoTime(cor, nome) {
+  function mudarCorDoTime(cor: string, nome: string) {
     setTimes(times.map(time => {
       if(time.nome === nome) {
         time.corPrimaria = cor;
@@ -61,20 +62,20 @@ function App() {
     }))
   }
 
-  function cadastrarTime(novoTime) {
-    setTimes([...times, {...novoTime}])
-  }
+  // function cadastrarTime(novoTime) {
+  //  return  setTimes([...times, {...novoTime}])
+  // }
 
   const colaboradorAdicionado = (colaborador: IColaborador) => {
 
-    // setColaboradores([...colaboradores, colaborador])
+    setColaboradores([...colaboradores, colaborador])
   }
   return (
     <div className="App">
       <Banner enderecoImagem='./imagens/banner.png' />
-      <Apresentacao />
       <Formulario  
-        cadastrarTime = {cadastrarTime}
+        times={[]}
+        // cadastrarTime = {cadastrarTime}
         nomesDosTimes={times.map(time => time.nome)} 
         aoColaboradorCadastrado={colaborador => colaboradorAdicionado(colaborador)} />
         {times.map(time => <Time 
@@ -86,7 +87,6 @@ function App() {
         colaboradores={colaboradores.filter(colaborador => colaborador.time === time.nome)}
         aoDeletar={deletarColaborador}
       /> )}
-      <Footer />
     </div>
   );
 }

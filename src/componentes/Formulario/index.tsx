@@ -4,12 +4,13 @@ import CampoTexto from "../CampoTexto";
 import ListaSuspensa from "../ListaSuspensa";
 import "./Formulario.css";
 import { IColaborador } from "../../shared/interfaces/IColaborador";
+// import { INovoTime } from "../../shared/INovoTime";
 
 interface FormularioProps {
     aoColaboradorCadastrado: (colaborador: IColaborador) => void
-    cadastrarTime: (dados: {nome: string, cor: string}) => string
+    // cadastrarTime: (dados: INovoTime) => void
     nomesDosTimes: string[]
-    times: string[]
+    times: []
 }
 
 const Formulario = (props: FormularioProps) => {
@@ -19,8 +20,8 @@ const Formulario = (props: FormularioProps) => {
   const [cargo, setCargo] = useState("");
   const [imagem, setImagem] = useState("");
   const [time, setTime] = useState("");
-  const [nomeTime, setNomeTime] = useState("");
-  const [CorTime, setCorTime] = useState("");
+  // const [nomeTime, setNomeTime] = useState("");
+  // const [CorTime, setCorTime] = useState("");
 
   const aoSalvar = (evento: React.FormEvent<HTMLFormElement>
     ) => {
@@ -82,9 +83,9 @@ const Formulario = (props: FormularioProps) => {
           Criar Card
         </Botao>
       </form>
-      <form onSubmit={(evento) => {
+      {/* <form onSubmit={(evento) => {
         evento.preventDefault()
-        props.cadastrarTime({nome: nomeTime, cor: CorTime});
+        // props.cadastrarTime({nome: nomeTime, cor: CorTime});
       }}>
         <h2>Preencha os dados para criar um novo time !</h2>
         <CampoTexto 
@@ -104,7 +105,7 @@ const Formulario = (props: FormularioProps) => {
         <Botao>
           Criar um novo time
         </Botao>
-      </form>
+      </form> */}
     </section>
   );
 };
