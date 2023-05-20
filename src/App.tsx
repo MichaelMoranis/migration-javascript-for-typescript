@@ -5,8 +5,6 @@ import Banner from "./componentes/Banner"
 import { IColaborador } from './shared/interfaces/IColaborador';
 // import { INovoTime } from './shared/INovoTime';
 
-
-
 function App() {
   const [times, setTimes ] = useState([
     {
@@ -70,6 +68,7 @@ function App() {
 
     setColaboradores([...colaboradores, colaborador])
   }
+  
   return (
     <div className="App">
       <Banner enderecoImagem='./imagens/banner.png' />
@@ -80,7 +79,7 @@ function App() {
         aoColaboradorCadastrado={colaborador => colaboradorAdicionado(colaborador)} />
         {times.map(time => <Time 
         mudarCor={mudarCorDoTime}
-        key={time.nome} 
+        key={time.nome}   
         nome={time.nome} 
         corPrimaria={time.corPrimaria} 
         corSecundaria={time.corSecundaria}
