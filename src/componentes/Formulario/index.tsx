@@ -7,81 +7,87 @@ import { IColaborador } from "../../shared/interfaces/IColaborador";
 // import { INovoTime } from "../../shared/INovoTime";
 
 interface FormularioProps {
-    aoColaboradorCadastrado: (colaborador: IColaborador) => void
-    // cadastrarTime: (dados: INovoTime) => void
-    nomesDosTimes: string[]
-    times: []
+  aoColaboradorCadastrado: (colaborador: IColaborador) => void;
+  // cadastrarTime: (dados: INovoTime) => void
+  nomesDosTimes: string[];
+  times: [];
 }
 
 const Formulario = (props: FormularioProps) => {
-
   const [nome, setNome] = useState("");
   const [sobrenome, setSobreNome] = useState("");
   const [cargo, setCargo] = useState("");
   const [imagem, setImagem] = useState("");
   const [time, setTime] = useState("");
+  const [data, setData] = useState("");
   // const [nomeTime, setNomeTime] = useState("");
   // const [CorTime, setCorTime] = useState("");
 
-  const aoSalvar = (evento: React.FormEvent<HTMLFormElement>
-    ) => {
+  const aoSalvar = (evento: React.FormEvent<HTMLFormElement>) => {
     evento.preventDefault();
     props.aoColaboradorCadastrado({
       nome,
       sobrenome,
       cargo,
       imagem,
-      time
-    })
-    setNome("")
-    setCargo("")
-    setSobreNome("")
-    setImagem("")
-    setTime("")
+      time,
+      data
+    });
+    setNome("");
+    setCargo("");
+    setSobreNome("");
+    setImagem("");
+    setTime("");
   };
 
   return (
     <section className="formulario">
       <form onSubmit={aoSalvar}>
         <h2>Preencha os dados para criar o card do colaborador !</h2>
-        <CampoTexto 
-           obrigatorio={true} 
-           label="Nome" 
-           placeholder="digite seu nome"
-           valor={nome}
-           aoAlterar={valor => setNome(valor)}
-           />
-        <CampoTexto 
-           obrigatorio={true} 
-           label="Sobrenome" 
-           placeholder="digite seu sobrenome"
-           valor={sobrenome}
-           aoAlterar={valor => setSobreNome(valor)}
-           />
-        <CampoTexto 
-           obrigatorio={true} 
-           label="Cargo" 
-           placeholder="digite o seu cargo" 
-           valor={cargo}
-           aoAlterar={valor => setCargo(valor)}
-           />
         <CampoTexto
-           label="Imagem" 
-           descricao=" exemplo: --> https://github.com/devsoftware.png"
-           placeholder="digite o endereco da sua imagem"
-           valor={imagem}
-           aoAlterar={valor => setImagem(valor)}
-           />
-        <ListaSuspensa 
-            label="Time" 
-            required={true}
-            itens={props.nomesDosTimes}
-            valor={time}
-            aoAlterar={valor => setTime(valor)}
-           />
-        <Botao>
-          Criar Card
-        </Botao>
+          obrigatorio={true}
+          label="Nome"
+          placeholder="digite seu nome"
+          valor={nome}
+          aoAlterar={(valor) => setNome(valor)}
+        />
+        <CampoTexto
+          obrigatorio={true}
+          label="Sobrenome"
+          placeholder="digite seu sobrenome"
+          valor={sobrenome}
+          aoAlterar={(valor) => setSobreNome(valor)}
+        />
+        <CampoTexto
+          obrigatorio={true}
+          label="Cargo"
+          placeholder="digite o seu cargo"
+          valor={cargo}
+          aoAlterar={(valor) => setCargo(valor)}
+        />
+        <CampoTexto
+          label="Imagem"
+          descricao=" exemplo: --> https://github.com/devsoftware.png"
+          placeholder="digite o endereco da sua imagem"
+          valor={imagem}
+          aoAlterar={(valor) => setImagem(valor)}
+        />
+        <CampoTexto
+          label="data de entrada no time"
+          descricao=""
+          placeholder=""
+          valor={data}
+          aoAlterar={(valor) => setData(valor)}
+          tipo="date"
+        />
+        <ListaSuspensa
+          label="Time"
+          required={true}
+          itens={props.nomesDosTimes}
+          valor={time}
+          aoAlterar={(valor) => setTime(valor)}
+        />
+        <Botao>Criar Card</Botao>
       </form>
       {/* <form onSubmit={(evento) => {
         evento.preventDefault()

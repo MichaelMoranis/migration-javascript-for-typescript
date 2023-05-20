@@ -8,10 +8,11 @@ interface ColaboradorProps {
     imagem: string
     corDeFundo: string
     aoDeletar: (nome: string) => void
+    data: string
 
 }
 
-const Colaborador = ({nome, sobrenome, cargo, imagem, corDeFundo, aoDeletar}: ColaboradorProps) => {
+const Colaborador = ({nome, sobrenome, cargo, imagem, corDeFundo, aoDeletar, data}: ColaboradorProps) => {
     return (
         <div className="colaborador">
             <AiFillCloseCircle 
@@ -26,6 +27,7 @@ const Colaborador = ({nome, sobrenome, cargo, imagem, corDeFundo, aoDeletar}: Co
                 <h4>{nome}</h4>
                 <h4>{sobrenome}</h4>
                 <h5>{cargo}</h5>
+                <h5>{new Date(data).toLocaleDateString()}</h5>
             </div>
         </div>
     )
